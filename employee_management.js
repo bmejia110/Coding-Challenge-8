@@ -27,3 +27,15 @@ class Department {
         return this._ this._employees.reduce((total, employee) => total + employee._salary, 0);  // use reduce to sump up salaries
     }
 }
+
+//Task 3: Create a Manager Class that Inherits from Employee
+
+class Manager extends Employee {
+    constructor(name, salary, position, department, bonus) {
+        super(name, salary, position, department);  // call the employees class using super
+        this._bonus = bonus;
+    }
+    getDetails() {  // editing get details to include the bonus
+        return "${super.getDetails()} Bonus is $${this._bonus}";
+    }
+}
