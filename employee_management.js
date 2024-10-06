@@ -39,3 +39,32 @@ class Manager extends Employee {
         return "${super.getDetails()} Bonus is $${this._bonus}";
     }
 }
+
+//Task 4: Handle Bonuses for Managers
+
+calculateTotalSalaryWIthBonus() {
+    return this.employees.reduce((total, employee) => {
+        if(employee instanceof Manager) {
+            return total +employee.salary + employee.bonus;
+ 
+        }
+    }) 
+}
+
+//Task 5: Create and Manage Department Employees
+
+const salesDepartment = new Department("sales");
+const hrDepartment = new Department("hr");
+//creating new employees
+const bri = new Manager("bri", 80000, "Hr Manager", "hr");
+const nikki = new employee("nikki", 80000, "Sales Employee", "sales");
+const myles = new employee("myles", 80000, "Sales Employee", "sales");
+const tyler = new employee("tyler", 80000, "Sales Employee", "sales");
+// adding employees to department
+salesDepartment.addEmployee(bri);
+salesDepartment.addEmployee(nikki);
+salesDepartment.addEmployee(myles);
+salesDepartment.addEmployee(tyler);
+
+console.log("sales department total salary: $${salesDepartment.calculateTotalSalaryWithBonus()}")  //Total salary for each depart with bonuses
+console.log("hr department total salary: $${hrDepartment.calculateTotalSalaryWithBonus()}")
